@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:34:21 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/21 11:54:04 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/21 15:35:26 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	show_grid(unsigned int **grid, unsigned int x)
 }
 
 // Put a character on the grid
-void	dispatch_grid(unsigned int index, char c, unsigned int **grid, unsigned int x)
+void	xy_grid(unsigned int xy[2], unsigned int index, unsigned int x)
 {
 	unsigned int	fake_x;
 
@@ -84,23 +84,28 @@ void	dispatch_grid(unsigned int index, char c, unsigned int **grid, unsigned int
 	if (index < fake_x)
 	// Top
 	{
-		grid[0][1 + index] = c - '0';
+		xy[0] = 0;
+		xy[1] = 1 + index;
+		return ;
 	}
-	else if (index < (fake_x * 2))
+	if (index < (fake_x * 2))
 	// Bot
 	{
-		grid[x - 1][(index % fake_x) + 1] = c - '0';
+		xy[0] = x - 1;
+		xy[1] = (index % fake_x) + 1;
+		return ;
 	}
-	else if (index < (fake_x * 3))
+	if (index < (fake_x * 3))
 	// Left
 	{
-		grid[(index % fake_x) + 1][0] = c - '0';
+		xy[0] = (index % fake_x) + 1;
+		xy[1] = 0;
+		return ;
 	}
-	else
 	// Right
-	{
-		grid[(index % fake_x) + 1][x - 1] = c - '0';
-	}
+	xy[0] = (index % fake_x) + 1;
+	xy[1] = x - 1;
+	return ;
 }
 
 // Read the grid values from string
@@ -108,6 +113,7 @@ void	read_grid(char *str, unsigned int **grid, unsigned int x)
 {
 	unsigned int	i;
 	unsigned int	index;
+	unsigned int	xy[2];
 
 	i = 0;
 	index = 0;
@@ -115,7 +121,8 @@ void	read_grid(char *str, unsigned int **grid, unsigned int x)
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			dispatch_grid(index, str[i], grid, x);
+			xy_grid(xy, index, x);
+			grid[xy[0]][xy[1]] = str[i] - '0';
 			index++;
 		}
 		i++;

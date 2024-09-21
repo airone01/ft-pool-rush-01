@@ -60,3 +60,6 @@ int main(void)
 	ft_putstr("\n");
 	show_grid(grid, x + 2);
 }
+
+// NE PAS OUBLIER LE FREE PAR PITIE
+// ET TESTER VALGRIND
