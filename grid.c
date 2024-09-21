@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:34:21 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/21 15:35:26 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/21 15:54:29 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	show_grid(unsigned int **grid, unsigned int x)
 }
 
 // Put a character on the grid
-void	xy_grid(unsigned int xy[2], unsigned int index, unsigned int x)
+void	get_xy(unsigned int xy[2], unsigned int index, unsigned int x)
 {
 	unsigned int	fake_x;
 
@@ -119,9 +119,9 @@ void	read_grid(char *str, unsigned int **grid, unsigned int x)
 	index = 0;
 	while(str[i] != '\0')
 	{
+		get_xy(xy, index, x);
 		if (str[i] >= '0' && str[i] <= '9')
 		{
-			xy_grid(xy, index, x);
 			grid[xy[0]][xy[1]] = str[i] - '0';
 			index++;
 		}
