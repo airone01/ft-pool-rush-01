@@ -14,19 +14,22 @@
 
 // Prototypes :-)
 // void	make_grid(unsigned int **grid, unsigned int x);
-unsigned int	**make_grid(unsigned int x);
-void	show_grid(unsigned int **grid, unsigned int x);
+unsigned int **make_grid(unsigned int x);
+void show_grid(unsigned int **grid, unsigned int x);
+void read_grid(char *str, unsigned int **grid, unsigned int x);
+unsigned int read_grid_axis_size(char *str);
+void ft_putstr(char *str);
 
-void	populate(unsigned int **grid, unsigned int x)
+void populate(unsigned int **grid, unsigned int x)
 {
-	unsigned int	i;
-	unsigned int	j;
+	unsigned int i;
+	unsigned int j;
 
 	i = 0;
-	while(i <= x)
+	while (i <= x)
 	{
 		j = 0;
-		while(j <= x)
+		while (j <= x)
 		{
 			// printf("### test\n");
 			// printf("i: %d, j: %d\n", i, j);
@@ -39,13 +42,21 @@ void	populate(unsigned int **grid, unsigned int x)
 	}
 }
 
-int	main(void)
+int main(void)
 {
-	unsigned int	**grid;
-	int	x;
+	unsigned int **grid;
+	int x;
+	char *entry;
 
-	x = 5;
-	grid = make_grid(x);
-	populate(grid, x);
-	show_grid(grid, x);
+	//       |up   | |down | |left | |right|
+	entry = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 2";
+	x = read_grid_axis_size(entry);
+	grid = make_grid(x + 2);
+
+	show_grid(grid, x + 2);
+	// populate(grid, x);	// debug
+
+	read_grid(entry, grid, x + 2);
+	ft_putstr("\n");
+	show_grid(grid, x + 2);
 }

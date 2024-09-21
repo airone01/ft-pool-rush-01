@@ -1,10 +1,18 @@
 .PHONY: build
 
 build:
-	@echo "### Compilation avec cc..."
-	cc -Wall -Wextra -Werror -o rush-01 *.c
+	### build: rush01
+	cc -Wall -Wextra -Werror -o rush-01.out *.c
+
+test: test_make_grid clean
+
+clean:
+	### clean: tests
+	rm -f test_make_grid.out
+	### clean: rush
+	rm -f rush-01.out
 
 test_make_grid:
-	@echo "### Compilation et test de make_grid..."
-	cc -Wall -Wextra -Werror grid.c lib.c tests/make_grid.c
-	./a.out|cat -e
+	### test: make_grid
+	cc -Wall -Wextra -Werror grid.c lib.c tests/make_grid.c -o test_make_grid.out
+	./test_make_grid.out
