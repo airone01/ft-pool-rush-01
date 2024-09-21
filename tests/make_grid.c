@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:27:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/21 16:10:36 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/21 16:13:36 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,3 +69,5 @@ int main(void)
 
 // NE PAS OUBLIER LE FREE PAR PITIE
 // ET TESTER VALGRIND
+// ET CHANGER LES COMMITS
+// ET RENOMMER 'x' en 'size'
