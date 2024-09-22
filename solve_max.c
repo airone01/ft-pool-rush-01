@@ -6,11 +6,9 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:20:11 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 10:36:37 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:41:43 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 // Prototypes :-)
 void	get_xy(unsigned int xy[2], unsigned int index, unsigned int size);

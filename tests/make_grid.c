@@ -6,11 +6,9 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:27:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 10:38:40 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:41:38 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 // Prototypes :-)
 // void	make_grid(unsigned int **grid, unsigned int size);
