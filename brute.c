@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:08:02 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 18:56:06 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:22:22 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,35 @@
 
 #include <stdio.h> // ;aigdoiuadbliasdbnliuasbdasd
 
+const unsigned int tries[24] = {
+	1234,
+	1243,
+	1324,
+	1342,
+	1423,
+	1432,
+	2134,
+	2143,
+	2314,
+	2341,
+	2413,
+	2431,
+	3124,
+	3142,
+	3214,
+	3241,
+	3412,
+	3421,
+	4123,
+	4132,
+	4213,
+	4231,
+	4312,
+	4321
+};
+
 // Returns:  1 when at least a value changed
-unsigned int	brute_set(unsigned int **grid, unsigned int size, unsigned int magic, unsigned int *abcd)
+unsigned int	brute_set(unsigned int try, unsigned int **grid, unsigned int size, unsigned int magic)
 {
 	unsigned int	i;
 
@@ -23,16 +50,17 @@ unsigned int	brute_set(unsigned int **grid, unsigned int size, unsigned int magi
 	while (i < size - 1)
 	{
 		// Satan
-		if ((grid[i][1] == 0 || grid[i][1] == abcd[0]) &&
-			(grid[i][2] == 0 || grid[i][2] == abcd[1]) &&
-			(grid[i][3] == 0 || grid[i][3] == abcd[2]) &&
-			(grid[i][4] == 0 || grid[i][4] == abcd[3]))
+		if ((grid[i][1] == 0 || grid[i][1] == try / 1000) &&
+			(grid[i][2] == 0 || grid[i][2] == (try / 100) % 100) &&
+			(grid[i][3] == 0 || grid[i][3] == (try / 10) % 10) &&
+			(grid[i][4] == 0 || grid[i][4] == try % 10))
 		{
-			grid[i][1] = abcd[0];
-			grid[i][2] = abcd[1];
-			grid[i][3] = abcd[2];
-			grid[i][4] = abcd[3];
-			printf("%d%d%d%d\n", abcd[0], abcd[1], abcd[2], abcd[3]);
+			grid[i][1] = try / 1000;
+			grid[i][2] = (try / 100) % 10;
+			grid[i][3] = (try / 10) % 10;
+			grid[i][4] = try % 10;
+			// printf("%d\n", (try / 10) % 10);
+			printf("%d%d%d%d\n", grid[i][1], grid[i][2], grid[i][3], grid[i][4]);
 			// show_grid(grid, size);
 			if (!grid_check(grid, size, magic))
 				printf("YEEEEEEEEEEEEES\n");
@@ -43,51 +71,18 @@ unsigned int	brute_set(unsigned int **grid, unsigned int size, unsigned int magi
 	return (0);
 }
 
-unsigned int	make_tries(unsigned int **grid, unsigned int size, unsigned int magic, unsigned int ab[2])
-{
-	unsigned int	abcd[4];
-	unsigned int	c;
-	unsigned int	d;
-
-	c = 1;
-	while (c < size - 1)
-	{
-		d = 1;
-		while (d < size - 1)
-		{
-			if ((ab[0] * ab[1] * c * d) == magic)
-			{
-				abcd[0] = ab[0];
-				abcd[1] = ab[1];
-				abcd[2] = c;
-				abcd[3] = d;
-				brute_set(grid, size, magic, abcd);
-			}
-			d++;
-		}
-		c++;
-	}
-	return(0);
-}
-
 unsigned int	brute_try(unsigned int **grid, unsigned int size, unsigned int magic)
 {
-	unsigned int	a;
-	unsigned int	b;
-	unsigned int	ab[2];
+	unsigned int	i;
+	unsigned int	**duped;
 
-	a = 1;
-	while (a < size - 1)
+	i = 0;
+	while (i < 24)
 	{
-		b = 1;
-		while (b < size - 1)
-		{
-			ab[0] = a;
-			ab[1] = b;
-			make_tries(grid, size, magic, ab);
-			b++;
-		}
-		a++;
+		duped = grid_dupe(grid, size);
+		brute_set(tries[i], duped, size, magic);
+		show_grid(duped, size);
+		i++;
 	}
 	return (0);
 }

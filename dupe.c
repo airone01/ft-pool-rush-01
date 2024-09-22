@@ -6,14 +6,14 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:14:54 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 18:20:52 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 19:19:17 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
 // Duplicate a grid
-unsigned int	**ft_dupe(unsigned int **grid, unsigned int size)
+unsigned int	**grid_dupe(unsigned int **grid, unsigned int size)
 {
 	unsigned int	i;
 	unsigned int	j;
