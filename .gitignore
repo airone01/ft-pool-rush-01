@@ -13,10 +13,10 @@
 *
 **/*
 
-!*.h
-!**/*.h
-!*.c
-!**/*.c
-!Makefile
+!ex00/*.h
+!ex00/**/*.h
+!ex00/*.c
+!ex00/**/*.c
+!ex00/Makefile
 !README.md
 !.gitignore
