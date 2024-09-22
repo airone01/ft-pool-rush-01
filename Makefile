@@ -14,5 +14,5 @@ clean:
 
 test_make_grid:
 	### test: make_grid
-	cc -Wall -Wextra -Werror grid.c lib.c solve_max.c solve_min.c tests/make_grid.c -o test_make_grid.out
+	cc -Wall -Wextra -Werror grid.c lib.c solve_max.c solve_min.c tests/make_grid.c check.c brute.c grid2.c -o test_make_grid.out
 	./test_make_grid.out

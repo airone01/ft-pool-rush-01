@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:20:11 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 10:57:22 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:43:39 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ void	get_xy(unsigned int xy[2], unsigned int index, unsigned int size);
 
 // Solves one uint depending on the where we currently are
 // Returns 1 if something was changed, 0 otherwise.
-void	solve_max_xy_cond(unsigned int xy[2], unsigned int **grid, unsigned int size, unsigned int j)
+void	solve_max_place(unsigned int xy[2], unsigned int **grid, unsigned int size, unsigned int j)
 {
 	if (xy[0] == 0)
 		grid[j][xy[1]] = j;
@@ -29,7 +29,7 @@ void	solve_max_xy_cond(unsigned int xy[2], unsigned int **grid, unsigned int siz
 
 // After a max number (n) is hit, this function loops through the table to
 // set the all the buildings in the corresponding line/row by calling
-// solve_max_xy_cond.
+// solve_max_place.
 // E.g.
 // x-4---?---?---?-x
 // | . . . . . . . |
@@ -53,7 +53,7 @@ void	solve_max_xy(unsigned int xy[2], unsigned int **grid, unsigned int size)
 		j = 1;
 		while (j < middle_size + 1)
 		{
-			solve_max_xy_cond(xy, grid, size, j);
+			solve_max_place(xy, grid, size, j);
 			j++;
 		}
 	}

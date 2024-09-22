@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:20:11 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 11:27:37 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:31:50 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ unsigned int	solve_min_xy_cond(unsigned int xy[2], unsigned int **grid, unsigned
 	}
 	if (xy[1] == 0)
 	{
-		// printf("c: '%d', x: %d, y: %d, c1: %d, c2: %d, size: %d\n", grid[xy[0]][1], xy[0], 1, (grid[xy[0]][1] != (size - 2)), (grid[xy[0]][1] != 0), size - 2);
 		if ((grid[xy[0]][1] != (size - 2)) && (grid[xy[0]][1] != 0))
 			return (1);
 		grid[xy[0]][1] = size - 2;
