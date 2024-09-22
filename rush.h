@@ -6,12 +6,11 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 18:07:16 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 19:21:15 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 20:02:48 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RUSH_H
-#define RUSH_H
 
 unsigned int	grid_check(unsigned int **grid, unsigned int size, unsigned int magic);
 unsigned int	brute_try(unsigned int **grid, unsigned int size, unsigned int magic);
