@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:58:00 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 18:09:22 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:54:01 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Checks for the solution
 // Returns 1 if bad, 0 otherwise
-unsigned int	ft_check(unsigned int **grid, unsigned int size, unsigned int magic)
+unsigned int	grid_check(unsigned int **grid, unsigned int size, unsigned int magic)
 {
 	unsigned int	countX;
 	unsigned int	countY;

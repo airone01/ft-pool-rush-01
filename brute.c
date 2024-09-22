@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:08:02 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 18:08:07 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:56:06 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ unsigned int	brute_set(unsigned int **grid, unsigned int size, unsigned int magi
 			grid[i][4] = abcd[3];
 			printf("%d%d%d%d\n", abcd[0], abcd[1], abcd[2], abcd[3]);
 			// show_grid(grid, size);
-			if (!ft_check(grid, size, magic))
+			if (!grid_check(grid, size, magic))
 				printf("YEEEEEEEEEEEEES\n");
 			return (1);
 		}
