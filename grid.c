@@ -6,10 +6,11 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:34:21 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/21 15:54:29 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:07:44 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h> // SUPPRIMER!!!!
 #include <stdlib.h>
 
 // Prototypes :-)

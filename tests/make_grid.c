@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 11:27:52 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/21 16:13:36 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:14:26 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main(void)
 	char *entry;
 
 	//       |up   | |down | |left | |right|
-	// entry = "4 3 2 1 1 2 4 2 4 3 2 1 1 2 2 2";
+	// entry = "4 3 2 1 1 2 2 2 4 3 2 1 1 2 2 4";
 	entry = "8 3 2 1 8 2 2 2 8 3 2 1 1 2 2 2 8 3 2 1 1 2 2 2 8 3 2 1 1 2 2 2";
 	x = read_grid_axis_size(entry) + 2;
 	grid = make_grid(x);
@@ -70,4 +70,5 @@ int main(void)
 // NE PAS OUBLIER LE FREE PAR PITIE
 // ET TESTER VALGRIND
 // ET CHANGER LES COMMITS
-// ET RENOMMER 'x' en 'size'
+// ET RENOMMER 'x' EN 'size'
+// ET METTRE LE PROTO DANS LE MAIN PRINCIPAL
