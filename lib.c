@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:24:45 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 13:59:31 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:42:10 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ int	ft_strlen(char *str)
 	return (ft_strlen(str + sizeof(char)) + 1);
 }
 
+// x to the power of y
 unsigned int	ft_pow(const unsigned int x, const unsigned int y)
 {
 	if (y == 0)
 		return (1);
-	return (ft_pow(x, y - 1) + (x * x));
+	return (ft_pow(x, y - 1) * x);
 }
