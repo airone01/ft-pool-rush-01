@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:34:21 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 10:07:44 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:26:57 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,43 +33,43 @@ unsigned int	read_grid_axis_size(char *str)
 	return ((len + 1) / 4);
 }
 
-// unsigned int	make_grid(unsigned int **grid, unsigned int x)
-unsigned int	**make_grid(unsigned int x)
+// unsigned int	make_grid(unsigned int **grid, unsigned int size)
+unsigned int	**make_grid(unsigned int size)
 {
 	unsigned int	**grid;
 	unsigned int	i;
 
-	grid = malloc(x * (x * sizeof(unsigned int)));
+	grid = malloc(size * (size * sizeof(unsigned int)));
 	i = 0;
-	while (i <= x)
+	while (i <= size)
 	{
-		grid[i] = malloc(x * sizeof(unsigned int));
+		grid[i] = malloc(size * sizeof(unsigned int));
 		i++;
 	}
 	return (grid);
 }
 
 // Show the grid (lol)
-void	show_grid(unsigned int **grid, unsigned int x)
+void	show_grid(unsigned int **grid, unsigned int size)
 {
 	unsigned int	i;
 	unsigned int	j;
 
 	i = 0;
-	while(i < x)
+	while(i < size)
 	{
 		j = 0;
-		while(j < x)
+		while(j < size)
 		{
 			if (grid[i][j] == 0)
 				ft_putchar('.');
 			else
 				ft_putchar(grid[i][j] + '0');
-			if (j < x - 1)
+			if (j < size - 1)
 				ft_putchar(' ');
 			j++;
 		}
-		if (i < x - 1)
+		if (i < size - 1)
 			ft_putchar('\n');
 		i++;
 	}
@@ -77,40 +77,40 @@ void	show_grid(unsigned int **grid, unsigned int x)
 }
 
 // Put a character on the grid
-void	get_xy(unsigned int xy[2], unsigned int index, unsigned int x)
+void	get_xy(unsigned int xy[2], unsigned int index, unsigned int size)
 {
-	unsigned int	fake_x;
+	unsigned int	middle_size;
 
-	fake_x = x - 2;
-	if (index < fake_x)
+	middle_size = size - 2;
+	if (index < middle_size)
 	// Top
 	{
 		xy[0] = 0;
 		xy[1] = 1 + index;
 		return ;
 	}
-	if (index < (fake_x * 2))
+	if (index < (middle_size * 2))
 	// Bot
 	{
-		xy[0] = x - 1;
-		xy[1] = (index % fake_x) + 1;
+		xy[0] = size - 1;
+		xy[1] = (index % middle_size) + 1;
 		return ;
 	}
-	if (index < (fake_x * 3))
+	if (index < (middle_size * 3))
 	// Left
 	{
-		xy[0] = (index % fake_x) + 1;
+		xy[0] = (index % middle_size) + 1;
 		xy[1] = 0;
 		return ;
 	}
 	// Right
-	xy[0] = (index % fake_x) + 1;
-	xy[1] = x - 1;
+	xy[0] = (index % middle_size) + 1;
+	xy[1] = size - 1;
 	return ;
 }
 
 // Read the grid values from string
-void	read_grid(char *str, unsigned int **grid, unsigned int x)
+void	read_grid(char *str, unsigned int **grid, unsigned int size)
 {
 	unsigned int	i;
 	unsigned int	index;
@@ -120,7 +120,7 @@ void	read_grid(char *str, unsigned int **grid, unsigned int x)
 	index = 0;
 	while(str[i] != '\0')
 	{
-		get_xy(xy, index, x);
+		get_xy(xy, index, size);
 		if (str[i] >= '0' && str[i] <= '9')
 		{
 			grid[xy[0]][xy[1]] = str[i] - '0';
