@@ -1,7 +1,11 @@
 PROG = rush-01
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = main.c grid.c lib.c solve_max.c solve_min.c check.c brute.c dupe.c
+SRC = main.c \
+      ft_math.c ft_str.c \
+      solve_max.c solve_min.c \
+      grid.c dupe.c \
+      check.c brute.c 
 OBJ = $(SRC:.c=.o)
 
 build_all: $(PROG)

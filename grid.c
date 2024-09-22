@@ -6,15 +6,13 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 10:34:21 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 10:26:57 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:26:09 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h> // SUPPRIMER!!!!
-#include <stdlib.h>
+#include "rush.h"
 
-// Prototypes :-)
-void    ft_putchar(char c);
+#include <stdlib.h>
 
 // Read the size of one axis (X or Y) of the grid from string
 unsigned int	read_grid_axis_size(char *str)
