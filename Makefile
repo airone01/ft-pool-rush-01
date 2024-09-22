@@ -1,18 +1,21 @@
-.PHONY: build
+PROG = rush-01
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+SRC = main.c grid.c lib.c solve_max.c solve_min.c check.c brute.c dupe.c
+OBJ = $(SRC:.c=.o)
 
-build:
-	### build: rush01
-	cc -Wall -Wextra -Werror -o rush-01.out *.c
-
-test: test_make_grid clean
+build_all: $(PROG)
+$(PROG): $(OBJ)
+	$(CC) $(CFLAGS) -o $(PROG) $(OBJ)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	### clean: tests
-	rm -f test_make_grid.out
-	### clean: rush
-	rm -f rush-01.out
+	rm -f $(OBJ)
+clean_all: clean
+	rm -f $(PROG)
+again: clean_all build_all
+test: again
+	./$(PROG)
 
-test_make_grid:
-	### test: make_grid
-	cc -Wall -Wextra -Werror grid.c lib.c solve_max.c solve_min.c tests/make_grid.c check.c brute.c grid2.c -o test_make_grid.out
-	./test_make_grid.out
+.PHONY: build_all clean_all again

@@ -6,9 +6,11 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 12:58:00 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 17:04:28 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:09:22 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "rush.h"
 
 // Checks for the solution
 // Returns 1 if bad, 0 otherwise

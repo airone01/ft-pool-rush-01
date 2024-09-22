@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   grid2.c                                            :+:      :+:    :+:   */
+/*   dupe.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 14:14:54 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 14:30:30 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:20:52 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Prototypes :-)
-unsigned int	**make_grid(unsigned int size);
+#include "rush.h"
 
 // Duplicate a grid
 unsigned int	**ft_dupe(unsigned int **grid, unsigned int size)

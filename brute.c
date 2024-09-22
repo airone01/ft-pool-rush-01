@@ -6,34 +6,62 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 13:08:02 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 17:06:16 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 18:08:07 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Prototypes :-)
-unsigned int	ft_pow(const unsigned int x, const unsigned int y);
-unsigned int	**ft_dupe(unsigned int **grid, unsigned int size);
-unsigned int	ft_check(unsigned int **grid, unsigned int size, unsigned int magic);
-void	show_grid(unsigned int **grid, unsigned int size);
-void	ft_putstr(char *str);
+#include "rush.h"
 
 #include <stdio.h> // ;aigdoiuadbliasdbnliuasbdasd
 
-unsigned int	make_tries2(unsigned int **grid, unsigned int size, unsigned int magic, unsigned int a, unsigned int b)
+// Returns:  1 when at least a value changed
+unsigned int	brute_set(unsigned int **grid, unsigned int size, unsigned int magic, unsigned int *abcd)
 {
+	unsigned int	i;
+
+	i = 1;
+	while (i < size - 1)
+	{
+		// Satan
+		if ((grid[i][1] == 0 || grid[i][1] == abcd[0]) &&
+			(grid[i][2] == 0 || grid[i][2] == abcd[1]) &&
+			(grid[i][3] == 0 || grid[i][3] == abcd[2]) &&
+			(grid[i][4] == 0 || grid[i][4] == abcd[3]))
+		{
+			grid[i][1] = abcd[0];
+			grid[i][2] = abcd[1];
+			grid[i][3] = abcd[2];
+			grid[i][4] = abcd[3];
+			printf("%d%d%d%d\n", abcd[0], abcd[1], abcd[2], abcd[3]);
+			// show_grid(grid, size);
+			if (!ft_check(grid, size, magic))
+				printf("YEEEEEEEEEEEEES\n");
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+unsigned int	make_tries(unsigned int **grid, unsigned int size, unsigned int magic, unsigned int ab[2])
+{
+	unsigned int	abcd[4];
 	unsigned int	c;
 	unsigned int	d;
 
-	(void) grid;
 	c = 1;
 	while (c < size - 1)
 	{
 		d = 1;
 		while (d < size - 1)
 		{
-			if ((a * b * c * d) == magic)
+			if ((ab[0] * ab[1] * c * d) == magic)
 			{
-				printf("%d%d%d%d\n", a, b, c, d);
+				abcd[0] = ab[0];
+				abcd[1] = ab[1];
+				abcd[2] = c;
+				abcd[3] = d;
+				brute_set(grid, size, magic, abcd);
 			}
 			d++;
 		}
@@ -42,10 +70,11 @@ unsigned int	make_tries2(unsigned int **grid, unsigned int size, unsigned int ma
 	return(0);
 }
 
-unsigned int	make_tries1(unsigned int **grid, unsigned int size, unsigned int magic)
+unsigned int	brute_try(unsigned int **grid, unsigned int size, unsigned int magic)
 {
 	unsigned int	a;
 	unsigned int	b;
+	unsigned int	ab[2];
 
 	a = 1;
 	while (a < size - 1)
@@ -53,72 +82,12 @@ unsigned int	make_tries1(unsigned int **grid, unsigned int size, unsigned int ma
 		b = 1;
 		while (b < size - 1)
 		{
-			make_tries2(grid, size, magic, a, b);
+			ab[0] = a;
+			ab[1] = b;
+			make_tries(grid, size, magic, ab);
 			b++;
 		}
 		a++;
 	}
-	return(0);
-}
-
-// Returns:  1 when at least a value changed
-// unsigned int	brute_set(unsigned int **grid, unsigned int size, unsigned int try, unsigned int box)
-// {
-// 	unsigned int	i;
-// 	unsigned int	j;
-//
-// 	(void) try;
-// 	(void) box;
-//
-// 	i = 1;
-// 	while (i < size - 1)
-// 	{
-// 		j = 1;
-// 		while (j < size - 1)
-// 		{
-// 			if (grid[i][j] == 0)
-// 			{
-// 				// a = (n % 1000) / 100;
-// 				// b = (n % 100 ) / 10;
-// 				// c = (n % 10  ) / 1;
-// 				// printf("x: %d, y: %d\n", i, j);
-// 				// printf("%d\n", (try % ft_pow(size, box + 1)) / ft_pow(size, box));
-//
-// 				grid[i][j] = ((try % ft_pow(size, box + 1)) / ft_pow(size, box)) % (size - 2);
-// 				return (1);
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (0);
-// }
-
-unsigned int	brute_try(unsigned int **grid, unsigned int size, unsigned int magic)
-{
-	// unsigned int	**duped;
-	// unsigned int	box;
-	
-	(void) magic;
-	make_tries1(grid, size, magic);
-
-	// // printf("pow: %d\n", ft_pow(size - 2, n));
-	// while (try <= )
-	// {
-	// 	duped = ft_dupe(grid, size);
-	// 	if (brute_set(duped, size, try, box))
-	// 	{
-	// 		show_grid(duped, size);
-	// 	}
-	// 	box++;
-	// 	if (!ft_check(duped, size, magic))
-	// 	{
-	// 		ft_putstr("SOLUTION !!!!!!!!!!!\n");
-	// 		show_grid(duped, size);
-	// 		ft_putstr("SOLUTION !!!!!!!!!!!\n");
-	// 		return (1);
-	// 	}
-	// 	try++;
-	// }
 	return (0);
 }
