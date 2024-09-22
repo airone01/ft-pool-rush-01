@@ -6,7 +6,7 @@
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:20:11 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 10:41:43 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:57:22 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@ void	get_xy(unsigned int xy[2], unsigned int index, unsigned int size);
 // Returns 1 if something was changed, 0 otherwise.
 void	solve_max_xy_cond(unsigned int xy[2], unsigned int **grid, unsigned int size, unsigned int j)
 {
-	// Up
 	if (xy[0] == 0)
 		grid[j][xy[1]] = j;
-	// Down
 	if (xy[0] == size - 1)
 		grid[size - 1 - j][xy[1]] = j;
-	// Left
 	if (xy[1] == 0)
 		grid[xy[0]][j] = j;
-	// Right
 	if (xy[1] == size - 1)
 		grid[xy[0]][size - 1 - j] = j;
 }
@@ -64,7 +60,7 @@ void	solve_max_xy(unsigned int xy[2], unsigned int **grid, unsigned int size)
 }
 
 // Calls solve_max_xy on every uint of the hints.
-void	solve_max(unsigned int **grid, unsigned int size)
+unsigned int	solve_max(unsigned int **grid, unsigned int size)
 {
 	unsigned int	xy[2];
 	unsigned int	i;
@@ -76,4 +72,5 @@ void	solve_max(unsigned int **grid, unsigned int size)
 		solve_max_xy(xy, grid, size);
 		i++;
 	}
+	return (0);
 }
