@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solve_max.c                                        :+:      :+:    :+:   */
+/*   solve_min.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: elagouch <elagouch@42>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 15:20:11 by elagouch          #+#    #+#             */
-/*   Updated: 2024/09/22 10:36:37 by elagouch         ###   ########.fr       */
+/*   Updated: 2024/09/22 10:37:53 by elagouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,56 +17,47 @@ void	get_xy(unsigned int xy[2], unsigned int index, unsigned int size);
 
 // Solves one uint depending on the where we currently are
 // Returns 1 if something was changed, 0 otherwise.
-void	solve_max_xy_cond(unsigned int xy[2], unsigned int **grid, unsigned int size, unsigned int j)
+void	solve_min_xy_cond(unsigned int xy[2], unsigned int **grid, unsigned int size)
 {
 	// Up
 	if (xy[0] == 0)
-		grid[j][xy[1]] = j;
+		grid[1][xy[1]] = size - 2;
 	// Down
 	if (xy[0] == size - 1)
-		grid[size - 1 - j][xy[1]] = j;
+		grid[size -2][xy[1]] = size - 2;
 	// Left
 	if (xy[1] == 0)
-		grid[xy[0]][j] = j;
+		grid[xy[0]][1] = size - 2;
 	// Right
 	if (xy[1] == size - 1)
-		grid[xy[0]][size - 1 - j] = j;
+		grid[xy[0]][size - 2] = size - 2;
 }
 
-// After a max number (n) is hit, this function loops through the table to
+// After a min number (1) is hit, this function loops through the table to
 // set the all the buildings in the corresponding line/row by calling
-// solve_max_xy_cond.
+// solve_min_xy_cond.
 // E.g.
-// x-4---?---?---?-x
+// x-1---?---?---?-x
 // | . . . . . . . |
-// 4 1 . 2 . 3 . 4 ?
+// 1 4 . ? . ? . ? ?
 // | . . . . . . . |
-// ? 2 . ? . ? . ? ?
+// ? ? . ? . ? . ? ?
 // | . . . . . . . |
-// ? 3 . ? . ? . ? ?
+// ? ? . ? . ? . ? ?
 // | . . . . . . . |
-// ? 4 . ? . ? . ? ?
+// ? ? . ? . ? . ? ?
 // | . . . . . . . |
 // x-?---?---?---?-x
-void	solve_max_xy(unsigned int xy[2], unsigned int **grid, unsigned int size)
+void	solve_min_xy(unsigned int xy[2], unsigned int **grid, unsigned int size)
 {
-	unsigned int	j;
-	unsigned int	middle_size;
-
-	middle_size = size - 2;
-	if (grid[xy[0]][xy[1]] == middle_size)
+	if (grid[xy[0]][xy[1]] == 1)
 	{
-		j = 1;
-		while (j < middle_size + 1)
-		{
-			solve_max_xy_cond(xy, grid, size, j);
-			j++;
-		}
+		solve_min_xy_cond(xy, grid, size);
 	}
 }
 
-// Calls solve_max_xy on every uint of the hints.
-void	solve_max(unsigned int **grid, unsigned int size)
+// Calls solve_min_xy on every uint of the hints.
+void	solve_min(unsigned int **grid, unsigned int size)
 {
 	unsigned int	xy[2];
 	unsigned int	i;
@@ -75,7 +66,7 @@ void	solve_max(unsigned int **grid, unsigned int size)
 	while (i < size * 4)
 	{
 		get_xy(xy, i, size);
-		solve_max_xy(xy, grid, size);
+		solve_min_xy(xy, grid, size);
 		i++;
 	}
 }
