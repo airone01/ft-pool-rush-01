@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: elagouch <elagouch@42>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/22 18:31:06 by elagouch          #+#    #+#              #
+#    Updated: 2024/09/22 18:31:46 by elagouch         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 PROG = rush-01
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
@@ -22,4 +34,4 @@ again: clean_all build_all
 test: again
 	./$(PROG)
 
-.PHONY: build_all clean_all again
+.PHONY: build_all clean_all again test
